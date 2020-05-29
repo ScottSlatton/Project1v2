@@ -25,8 +25,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             return employee = dao.getEmployeeByLogin(employee);
         } catch(BusinessException e) {
             loggy.warning(e.getMessage());
+            throw new BusinessException(e.getMessage());
         }
-        return null;
     }
 
     @Override

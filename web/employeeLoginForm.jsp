@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page pageEncoding="UTF-8" isErrorPage="true" %>
 
 <jsp:include page="navBar.jsp"/>
 <div class="container">
@@ -24,7 +25,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                <pre>${pageContext.out.flush();exception.printStackTrace(pageContext.response.writer)}</pre>
             </div>
-
     </div>
 </div>
