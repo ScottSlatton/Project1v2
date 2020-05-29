@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <% response.setHeader("Cache-Control", "no-cache,no-store, must-revalidate");
-    if(session.getAttribute("customer") == null) response.sendRedirect("index.jsp");
+    if(session.getAttribute("customer") == null) response.sendRedirect("/");
 %>
 
 <jsp:include page="navBar.jsp"/>
@@ -21,7 +21,7 @@
                 <div class="form-group">
     <%-- text, deposit, and deposit buttons--%>
                     <label for="depositAmount">Enter Deposit Amount:</label>
-                    <input type="text" class="form-control" id="depositAmount" placeholder="Enter a number:" name="depositAmount">
+                    <input type="number" class="form-control" id="depositAmount" placeholder="Enter a number:" name="depositAmount">
         <br/>
         <br/>
                     <label for="depositAccount">Account: </label>

@@ -13,7 +13,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <% response.setHeader("Cache-Control", "no-cache,no-store, must-revalidate");
-    if(session.getAttribute("customer") == null) response.sendRedirect("index.jsp");
+    if(session.getAttribute("customer") == null) response.sendRedirect("/");
 %>
 <html>
 <body>

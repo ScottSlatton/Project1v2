@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <% response.setHeader("Cache-Control", "no-cache,no-store, must-revalidate");
-    if(session.getAttribute("employee") == null) response.sendRedirect("index.jsp");
+    if(session.getAttribute("employee") == null) response.sendRedirect("/");
 %>
 <html>
 <body>
@@ -42,6 +42,7 @@
 <%--          <h3 class="row">Status$${account.status} </h3>--%>
 
           <div class="card">
+              <br/>
               <h4 class="row justify-content-center">Pending Accounts</h4>
               <br/>
   <%--  Add table for transaction history here.--%>

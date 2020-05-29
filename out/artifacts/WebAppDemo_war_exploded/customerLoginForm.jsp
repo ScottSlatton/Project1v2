@@ -21,6 +21,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+        <a class="btn btn-info" href="/signup" role="button">Sign Up</a>
 
 <%-- Add Sign up link--%>
     </div>

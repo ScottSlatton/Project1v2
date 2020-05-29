@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <% response.setHeader("Cache-Control", "no-cache,no-store, must-revalidate");
-    if(session.getAttribute("customer") == null) response.sendRedirect("index.jsp");
+    if(session.getAttribute("customer") == null) response.sendRedirect("/");
 %>
 
 <jsp:include page="navBar.jsp"/>
@@ -41,7 +41,7 @@
         <br/>
         <br/>
         <label for="withdrawAmount">Enter Withdraw Amount:</label>
-        <input type="text" class="form-control" id="withdrawAmount" placeholder="Enter a number:" name="withdrawAmount">
+        <input type="number" class="form-control" id="withdrawAmount" placeholder="Enter a number:" name="withdrawAmount">
                 </div>
                 <button type="submit" class="btn btn-primary">Withdraw</button>
             </form>
