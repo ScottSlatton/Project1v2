@@ -36,7 +36,9 @@
       <div class="card-body border">
           <h3 class="row justify-content-center">Account Summary</h3>
               <h3 class="row">Balance: $${account.balance} </h3>
-              <h3 class="row">Account# ${account.id}</h3>
+              <h3 class="row">Type: ${account.accountType} </h3>
+              <h3 class="row">Account#: ${account.id}</h3>
+
 
           <div class="card">
               <h4 class="row justify-content-center">Transaction History</h4>

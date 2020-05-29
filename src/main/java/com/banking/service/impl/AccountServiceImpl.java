@@ -70,7 +70,7 @@ public class AccountServiceImpl implements AccountService {
             } catch(BusinessException e) {
                 e.printStackTrace();
             }
-            throw new BusinessException("Unable to withdraw funds.");
+//            throw new BusinessException("Unable to withdraw funds.");
         } else {
             System.out.println("Invalid amount entered.");
 
@@ -81,11 +81,13 @@ public class AccountServiceImpl implements AccountService {
 
         double balance = account.getBalance();
         double amount = transaction.getAmount();
+        System.out.println("inside deposit");
 
         if ((amount >= 0)){
             try{
-                updateBalance(account, transaction);
                 account.setBalance(balance + amount);
+                updateBalance(account, transaction);
+                System.out.println("successfully updated balance");
 
             } catch(BusinessException e){
                 e.printStackTrace();

@@ -16,11 +16,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "WithdrawServlet")
-public class WithdrawServlet extends HttpServlet {
+@WebServlet(name = "DepositServlet")
+public class TransferServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
+
         if(session == null){
             response.sendRedirect("viewCustomerHome.jsp");
         } else {
@@ -32,13 +33,13 @@ public class WithdrawServlet extends HttpServlet {
 
             //Make a new transaction object to update the accounts
             Transaction transaction = new Transaction();
-            transaction.setAmount(Double.parseDouble(request.getParameter("withdrawAmount")));
+            transaction.setAmount(Double.parseDouble(request.getParameter("depositAmount")));
 
             System.out.println(transaction.getAmount());
 
 
             for(int i = 0; i < accounts.size();i++){
-                boolean isSelectedAccount = accounts.get(i).getId().equals(request.getParameter("withdrawAccount"));
+                boolean isSelectedAccount = accounts.get(i).getId().equals(request.getParameter("depositAccount"));
 
                 if (isSelectedAccount){
                         Account selectedAcct = accounts.get(i);
@@ -46,7 +47,7 @@ public class WithdrawServlet extends HttpServlet {
                         transaction.setSender(selectedAcct);
                         transaction.setReceiver(selectedAcct);
                         AccountService aService = new AccountServiceImpl();
-                        aService.withdraw(selectedAcct, transaction);
+                        aService.deposit(selectedAcct, transaction);  //TODO check on deposit
                         response.sendRedirect("viewCustomerHome.jsp");
 
                     } catch (BusinessException e){
@@ -63,7 +64,7 @@ public class WithdrawServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/withdrawForm.jsp").forward(request, response);
+        request.getRequestDispatcher("/depositForm.jsp").forward(request, response);
     }
 }
 

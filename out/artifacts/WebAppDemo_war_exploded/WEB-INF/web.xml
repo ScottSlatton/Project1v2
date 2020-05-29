@@ -4,22 +4,22 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-<!--    <servlet>-->
-<!--        <servlet-name>MyServlet</servlet-name>-->
-<!--        <servlet-class>MyServlet</servlet-class>-->
-<!--    </servlet>-->
-
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>MyServlet</servlet-name>-->
-<!--        <url-pattern>/</url-pattern>-->
-<!--    </servlet-mapping>-->
-
 
 <!-- Servlets  -->
 
     <servlet>
+        <servlet-name>ApproveAccountServlet</servlet-name>
+        <servlet-class>com.banking.servlets.ApproveAccountServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>CustomerHomeServlet</servlet-name>
         <servlet-class>com.banking.servlets.CustomerHomeServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DepositServlet</servlet-name>
+        <servlet-class>com.banking.servlets.DepositServlet</servlet-class>
     </servlet>
 
     <servlet>
@@ -42,14 +42,6 @@
         <servlet-class>com.banking.servlets.LogoutServlet</servlet-class>
     </servlet>
 
-
-
-
-    <servlet>
-        <servlet-name>RickServlet</servlet-name>
-        <servlet-class>com.banking.servlets.RickServlet</servlet-class>
-    </servlet>
-
     <servlet>
         <servlet-name>WithdrawServlet</servlet-name>
         <servlet-class>com.banking.servlets.WithdrawServlet</servlet-class>
@@ -61,13 +53,21 @@
     </servlet>
 
 
-
 <!--  Servlet Mapping-->
 
+    <servlet-mapping>
+        <servlet-name>ApproveAccountServlet</servlet-name>
+        <url-pattern>/approve</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>CustomerHomeServlet</servlet-name>
         <url-pattern>/customerhome</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DepositServlet</servlet-name>
+        <url-pattern>/deposit</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -88,11 +88,6 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>RickServlet</servlet-name>
-        <url-pattern>/rickservlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

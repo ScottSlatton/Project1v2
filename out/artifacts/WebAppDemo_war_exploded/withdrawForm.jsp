@@ -14,20 +14,27 @@
     <br/>
     <div class="card container-fluid">
         <div class="card-body">
+
+            <c:forEach var="account" items="${customer.accounts}">
+                <h3>Account: ${account.id}</h3>
+                <h3>Balance: $${account.balance}</h3>
+            </c:forEach>
+            <br/>
             <form name="accountWithdraw" action="withdraw" method="post">
                 <div class="form-group">
     <%-- text, withdraw, and deposit buttons--%>
-                    <label for="withdrawAmount">Enter Withdraw Amount:</label>
-                    <input type="text" class="form-control" id="withdrawAmount" placeholder="Enter a number with a decimal" name="withdrawAmount">
+
+        <label for="withdrawAccount">Choose account to withdraw from: </label>
+        <select class="selectpicker" name="withdrawAccount" id="withdrawAccount">
+            <%--                    TODO for loop through customers accounts, adding options--%>
+            <c:forEach var="account" items="${customer.accounts}">
+                <option>${account.id}</option>
+            </c:forEach>
+        </select>
         <br/>
         <br/>
-                    <label for="withdrawAccount">Account: </label>
-                    <select class="selectpicker" name="withdrawAccount" id="withdrawAccount">
-<%--                    TODO for loop through customers accounts, adding options--%>
-                    <c:forEach var="account" items="${customer.accounts}">
-                        <option>${account.id}</option>
-                    </c:forEach>
-                    </select>
+        <label for="withdrawAmount">Enter Withdraw Amount:</label>
+        <input type="text" class="form-control" id="withdrawAmount" placeholder="Enter a number." name="withdrawAmount">
                 </div>
                 <button type="submit" class="btn btn-primary">Withdraw</button>
             </form>

@@ -29,14 +29,7 @@
 <%--<br/>--%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <c:if test="${customer == null || employee == null}">
-        <a class="navbar-brand" href="/">Monet & Bagges</a>
-    </c:if>
-
-    <c:if test="${customer != null}">
-        <a class="navbar-brand" href="/customerhome">Monet & Bagges</a>
-    </c:if>
-
+    <span class="navbar-brand">Monet & Bagges</span>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -54,7 +47,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/withdraw">Withdraw</a>
-<%--                        <a class="dropdown-item" href="/deposit">Deposit</a>--%>
+                        <a class="dropdown-item" href="/deposit">Deposit</a>
 <%--                        <a class="dropdown-item" href="/transfer">Transfer</a>--%>
                     </div>
                 </li>

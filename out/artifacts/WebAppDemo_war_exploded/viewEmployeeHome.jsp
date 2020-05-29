@@ -59,6 +59,7 @@
                     <td>${account.status}</td>
                     <td>
                       <form name="approve" action="approve" >
+                          <input type="hidden" id="custId" name="accountid" value="${account.id}">
                           <button type="submit" class="btn btn-primary">Approve</button>
                       </form>
                     </td>
