@@ -11,6 +11,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<% response.setHeader("Cache-Control", "no-cache,no-store, must-revalidate");
+    if(session.getAttribute("customer") == null) response.sendRedirect("index.jsp");
+%>
 <html>
 <body>
 <%--<%Customer customer = (Customer) session.getAttribute("customer");--%>
