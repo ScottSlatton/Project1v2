@@ -48,21 +48,16 @@ public class EmployeeLoginServlet extends HttpServlet {
             // grab accounts for employee to review
             AccountService aService = new AccountServiceImpl();
 
-
-
-            List<Account> accounts = new ArrayList<>();
-
-
+            List<Account> accounts = aService.getAllPendingAccounts();
 
 
             //set session attributes
             HttpSession session = request.getSession();
 
             session.setAttribute("employee", loggedInEmployee);
+            session.setAttribute("accounts", accounts);
 
-            System.out.println( loggedInEmployee + " successfully logged in");
-
-            //Send logged in Customer to Unique show page
+            //Send logged in Employee to Unique show page
 
             response.sendRedirect("http://localhost:9090/employeehome");
 

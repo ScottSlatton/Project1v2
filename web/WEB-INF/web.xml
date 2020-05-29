@@ -18,6 +18,11 @@
 <!-- Servlets  -->
 
     <servlet>
+        <servlet-name>ApproveAccountServlet</servlet-name>
+        <servlet-class>com.banking.servlets.ApproveAccountServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>CustomerHomeServlet</servlet-name>
         <servlet-class>com.banking.servlets.CustomerHomeServlet</servlet-class>
     </servlet>
@@ -42,14 +47,6 @@
         <servlet-class>com.banking.servlets.LogoutServlet</servlet-class>
     </servlet>
 
-
-
-
-    <servlet>
-        <servlet-name>RickServlet</servlet-name>
-        <servlet-class>com.banking.servlets.RickServlet</servlet-class>
-    </servlet>
-
     <servlet>
         <servlet-name>WithdrawServlet</servlet-name>
         <servlet-class>com.banking.servlets.WithdrawServlet</servlet-class>
@@ -64,6 +61,10 @@
 
 <!--  Servlet Mapping-->
 
+    <servlet-mapping>
+        <servlet-name>ApproveAccountServlet</servlet-name>
+        <url-pattern>/approve</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>CustomerHomeServlet</servlet-name>
@@ -88,11 +89,6 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>RickServlet</servlet-name>
-        <url-pattern>/rickservlet</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

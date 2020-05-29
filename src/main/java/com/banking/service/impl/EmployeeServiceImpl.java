@@ -3,6 +3,8 @@ package com.banking.service.impl;
 import com.banking.dao.EmployeeDao;
 import com.banking.dao.impl.EmployeeDaoImpl;
 import com.banking.exception.BusinessException;
+import com.banking.models.Account;
+import com.banking.models.Customer;
 import com.banking.models.Employee;
 import com.banking.service.EmployeeService;
 
@@ -17,6 +19,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee employeeLogin(Employee employee) throws BusinessException {
 
+
+
         try{
             validatesEmployee(employee);
             employee = dao.getEmployeeByLogin(employee);
@@ -24,6 +28,13 @@ public class EmployeeServiceImpl implements EmployeeService {
             loggy.warning(e.getMessage());
         }
         return employee;
+    }
+
+    @Override
+    public void approveAccount(Customer customer, Account account) throws BusinessException {
+        //update account to change status to ACTIVE from PENDING
+        //create association between customer and account by calling customeraccountdao
+
     }
 
     public void validatesEmployee(Employee employee) throws BusinessException {

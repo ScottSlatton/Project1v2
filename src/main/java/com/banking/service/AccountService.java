@@ -15,7 +15,9 @@ public interface AccountService {
     void deleteAccount(Account account) throws BusinessException;
     void withdraw(Account account, Transaction transaction) throws BusinessException;
     void deposit(Account account, Transaction transaction) throws BusinessException;
+    void updateAccount(Account account) throws BusinessException;
 
     List<Account> getAccountsByUser(Customer customer) throws BusinessException;
+    List<Account> getAllPendingAccounts() throws BusinessException;
 
 }

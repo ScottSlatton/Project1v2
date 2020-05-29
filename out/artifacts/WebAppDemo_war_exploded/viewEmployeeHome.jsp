@@ -32,34 +32,36 @@
 <%--      <jsp:include page="withdrawForm.jsp"/>--%>
 
 <%--  For Each loop through accounts that need approval--%>
-  <c:forEach var="account" items="${customer.accounts}">
+
       <div class="card-body border">
-          <h3 class="row justify-content-center">Account Summary</h3>
-              <h3 class="row">Balance: $${account.balance} </h3>
-              <h3 class="row">Account# ${account.id}</h3>
+<%--          <h3 class="row justify-content-center">Pending Account</h3>--%>
+<%--          <h3 class="row">Account# ${account.id}</h3>--%>
+<%--          <h3 class="row">Status$${account.status} </h3>--%>
 
           <div class="card">
-              <h4 class="row justify-content-center">Transaction History</h4>
+              <h4 class="row justify-content-center">Pending Accounts</h4>
               <br/>
   <%--  Add table for transaction history here.--%>
               <div class="card-body">
                 <table class="table">
                   <thead class="thead-dark">
                   <tr>
-                    <th scope="col">Sender Account#</th>
-                    <th scope="col">Receiver Account#</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Time</th>
+                    <th scope="col">Account#</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                   </tr>
                   </thead>
                   <tbody>
         <%--          For Each loop through transactions--%>
-                  <c:forEach var="transaction" items="${account.transactions}">
+                <c:forEach var="account" items="${accounts}">
                   <tr>
-                    <th scope="row">${transaction.sender.id}</th>
-                    <td>${transaction.receiver.id}</td>
-                    <td>$${transaction.amount}</td>
-                    <td>${transaction.timestamp}</td>
+                    <th scope="row">${account.id}</th>
+                    <td>${account.status}</td>
+                    <td>
+                      <form name="approve" action="approve" >
+                          <button type="submit" class="btn btn-primary">Approve</button>
+                      </form>
+                    </td>
                   </tr>
                   </c:forEach>
                   </tbody>
@@ -67,7 +69,6 @@
               </div>
           </div>
       </div>
-  </c:forEach>
       </div>
     </div>
 </div>

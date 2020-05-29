@@ -94,6 +94,16 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
+    @Override
+    public void updateAccount(Account account) throws BusinessException {
+        try{
+            dao.updateAccount(account);
+            System.out.println("Account successfully updated.");
+        }catch (BusinessException e){
+            e.printStackTrace();
+        }
+    }
+
     public void transfer(Account sender, Account receiver, Transaction transaction) throws BusinessException{
         // withdraw from sender
         try {
@@ -122,6 +132,17 @@ public class AccountServiceImpl implements AccountService {
             loggy.warning(e.getMessage());
         }
         throw new BusinessException("Could not find accounts for user.");
+    }
+
+    @Override
+    public List<Account> getAllPendingAccounts() throws BusinessException {
+        try{
+            List<Account> accounts = dao.getAllPendingAccounts();
+            return accounts;
+        } catch (BusinessException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void validatesAccount(Account account) throws BusinessException {

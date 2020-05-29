@@ -157,6 +157,7 @@ public class AccountDaoImpl implements AccountDao {
                 accounts.add(account);
 
             }
+            return accounts;
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
