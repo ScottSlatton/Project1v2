@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface AccountService {
 
-    Account createAccount(Account account) throws BusinessException;
+    void createAccount(Account account) throws BusinessException;
     Account getAccount(Account account) throws BusinessException;
     void updateBalance(Account account, Transaction transaction) throws BusinessException;
     void deleteAccount(Account account) throws BusinessException;

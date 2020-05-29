@@ -20,14 +20,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee employeeLogin(Employee employee) throws BusinessException {
 
 
-
         try{
             validatesEmployee(employee);
-            employee = dao.getEmployeeByLogin(employee);
+            return employee = dao.getEmployeeByLogin(employee);
         } catch(BusinessException e) {
             loggy.warning(e.getMessage());
         }
-        return employee;
+        return null;
     }
 
     @Override

@@ -22,6 +22,15 @@ public class CustomerAccountServiceImpl implements CustomerAccountService {
     }
 
     @Override
+    public void createCustomerAccount(Customer customer) throws BusinessException {
+        try{
+            dao.createCustomerAccount(customer);
+        } catch(BusinessException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void deleteCustomerAccount(Customer customer, Account account) throws BusinessException {
 
     }

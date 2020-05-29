@@ -18,7 +18,7 @@
                 <div class="form-group">
     <%-- text, deposit, and deposit buttons--%>
                     <label for="depositAmount">Enter Deposit Amount:</label>
-                    <input type="text" class="form-control" id="depositAmount" placeholder="Enter a number with a decimal" name="depositAmount">
+                    <input type="text" class="form-control" id="depositAmount" placeholder="Enter a number:" name="depositAmount">
         <br/>
         <br/>
                     <label for="depositAccount">Account: </label>

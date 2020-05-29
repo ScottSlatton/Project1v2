@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "loginServlet")
+@WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
 
 
@@ -54,29 +54,6 @@ public class LoginServlet extends HttpServlet {
             e.printStackTrace();
             response.sendRedirect("http://localhost:9090/");
         }
-
-
-
-
-
-
-        //response.sendRedirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-
-
-
-//
-//
-//        PrintWriter writer = response.getWriter();
-//
-//        String htmlResp = "<html>";
-//        htmlResp += "<h2>Your email is: " + email + "<br/>";
-//        htmlResp += "Your password is: " + password + "</h2>";
-//        htmlResp += "</html>";
-//
-//        writer.println(htmlResp);
-
-//        response.sendRedirect("http://localhost:9090/CustomerHomeServlet");
-
 
     }
 

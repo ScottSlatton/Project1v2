@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "DepositServlet")
+@WebServlet(name = "TransferServlet")
 public class TransferServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -33,13 +33,13 @@ public class TransferServlet extends HttpServlet {
 
             //Make a new transaction object to update the accounts
             Transaction transaction = new Transaction();
-            transaction.setAmount(Double.parseDouble(request.getParameter("depositAmount")));
+            transaction.setAmount(Double.parseDouble(request.getParameter("transferAmount")));
 
             System.out.println(transaction.getAmount());
 
 
             for(int i = 0; i < accounts.size();i++){
-                boolean isSelectedAccount = accounts.get(i).getId().equals(request.getParameter("depositAccount"));
+                boolean isSelectedAccount = accounts.get(i).getId().equals(request.getParameter("transferAccount"));
 
                 if (isSelectedAccount){
                         Account selectedAcct = accounts.get(i);
@@ -59,12 +59,12 @@ public class TransferServlet extends HttpServlet {
 
             }
 
-        }
+        } response.sendRedirect("viewCustomerHome.jsp");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/depositForm.jsp").forward(request, response);
+        request.getRequestDispatcher("/transferForm.jsp").forward(request, response);
     }
 }
 

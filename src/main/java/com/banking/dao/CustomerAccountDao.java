@@ -7,5 +7,6 @@ import com.banking.models.Customer;
 public interface CustomerAccountDao {
 
     void createCustomerAccount(Customer customer, Account account) throws BusinessException;
+    void createCustomerAccount(Customer customer) throws BusinessException;
     void deleteCustomerAccount(Customer customer, Account account) throws BusinessException;
 }

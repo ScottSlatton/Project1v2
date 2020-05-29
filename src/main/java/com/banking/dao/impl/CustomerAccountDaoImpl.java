@@ -15,6 +15,8 @@ import java.sql.Types;
 public class CustomerAccountDaoImpl implements CustomerAccountDao {
     @Override
     public void createCustomerAccount(Customer customer, Account account) throws BusinessException {
+
+
         try(Connection connection = OracleConnection.getConnection()){
             String sql= "{call CREATECUSTOMERACCOUNT(?, ?, ?)}";
 
@@ -36,6 +38,36 @@ public class CustomerAccountDaoImpl implements CustomerAccountDao {
         } catch (SQLException | ClassNotFoundException e) {
             throw new BusinessException("Internal error. Please don't panic.");
         };
+    }
+
+    @Override
+    public void createCustomerAccount(Customer customer) throws BusinessException {
+
+        try(Connection connection = OracleConnection.getConnection()){
+
+            System.out.println(customer);
+            String sql= "{call CREATECUSTOMERACCOUNT(?, ?, ?)}";
+
+            //fill in the ?'s
+
+            CallableStatement callableStatement = connection.prepareCall(sql);
+
+            callableStatement.setString(2, customer.getId());
+            callableStatement.setString(3,"temp");
+            //register id because it is an OUT param
+            callableStatement.registerOutParameter(1, Types.VARCHAR);
+
+            callableStatement.execute();
+
+
+            //callableStatement should have executed and now contains the ID param
+
+//           customer.setId(callableStatement.getString(1));
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new BusinessException("Unable to create CustomerAccount link.");
+        };
+
     }
 
     @Override

@@ -28,6 +28,7 @@ public class AccountDaoImpl implements AccountDao {
             callableStatement.registerOutParameter(1, Types.VARCHAR);
 
             callableStatement.execute();
+            account.setId(callableStatement.getString(1));
 
             //callableStatement should have executed and now contains the ID param
 
@@ -36,7 +37,7 @@ public class AccountDaoImpl implements AccountDao {
 
         } catch (SQLException | ClassNotFoundException e) {
             throw new BusinessException("Unable to create account.");
-        };
+        }
     }
 
     public Account getAccountById(String accountId) throws BusinessException{
@@ -76,7 +77,6 @@ public class AccountDaoImpl implements AccountDao {
             String sql = "Select * FROM CustomerAccount JOIN Account ON account.id = customeraccount.accountid AND customeraccount.customerid = ? AND account.status = 'ACTIVE'";
 
             PreparedStatement ps = connection.prepareStatement(sql);
-            //TODO replace temporary hardcode
             //ps.setString(1, customer.getId());
             ps.setString(1, customer.getId());
 
@@ -92,8 +92,6 @@ public class AccountDaoImpl implements AccountDao {
                 a.setBalance(rS.getDouble("balance"));
 
                 System.out.println("balance for " + a.getId() + " : " + rS.getDouble("balance"));
-
-                // FOR SOME REASON WITHDRAWING ADDS MONEY TO THE OPPOSITE ACCOUNT
 
                 //TODO set customers at some point. Nerd.
 

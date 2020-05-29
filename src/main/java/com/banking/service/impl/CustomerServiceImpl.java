@@ -51,8 +51,7 @@ public class CustomerServiceImpl implements CustomerService {
             //Get Accounts from DB
             AccountService aService = new AccountServiceImpl();
             List<Account> accounts = aService.getAccountsByUser(customer);
-
-
+            System.out.println("attaching accounts to customer in log in service" + accounts);
 
             //attach accounts to customer
             customer.setAccounts(accounts);

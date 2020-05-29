@@ -29,16 +29,23 @@
 <%--<br/>--%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
     <span class="navbar-brand">Monet & Bagges</span>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
 
+            <c:if test="${customer == null && employee == null}">
+                <a href="${pageContext.request.contextPath}/" class="navbar-brand">Home</a>
+            </c:if>
+
+
             <c:if test="${customer != null}">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/customerhome">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/customerhome">Home <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -46,9 +53,12 @@
                         Account
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/accountapply">Apply for Account</a>
+                        <c:if test="${customer.accounts != []}">
                         <a class="dropdown-item" href="/withdraw">Withdraw</a>
                         <a class="dropdown-item" href="/deposit">Deposit</a>
-<%--                        <a class="dropdown-item" href="/transfer">Transfer</a>--%>
+                        <a class="dropdown-item" href="/transfer">Transfer</a>
+                        </c:if>
                     </div>
                 </li>
 
@@ -57,13 +67,13 @@
 
             <c:if test="${customer == null && employee == null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="/signup">SignUp</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/signup">SignUp</a>
                 </li>
             </c:if>
 
             <c:if test="${customer != null || employee != null}">
             <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
             </li>
             </c:if>
 

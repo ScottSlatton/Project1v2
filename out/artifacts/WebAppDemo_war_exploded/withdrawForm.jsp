@@ -16,8 +16,12 @@
         <div class="card-body">
 
             <c:forEach var="account" items="${customer.accounts}">
+                <div class="card container-fluid">
+                    <div class="card-body">
                 <h3>Account: ${account.id}</h3>
-                <h3>Balance: $${account.balance}</h3>
+                <h3>Available Balance: $${account.balance}</h3>
+                    </div>
+                </div>
             </c:forEach>
             <br/>
             <form name="accountWithdraw" action="withdraw" method="post">
@@ -34,7 +38,7 @@
         <br/>
         <br/>
         <label for="withdrawAmount">Enter Withdraw Amount:</label>
-        <input type="text" class="form-control" id="withdrawAmount" placeholder="Enter a number." name="withdrawAmount">
+        <input type="text" class="form-control" id="withdrawAmount" placeholder="Enter a number:" name="withdrawAmount">
                 </div>
                 <button type="submit" class="btn btn-primary">Withdraw</button>
             </form>

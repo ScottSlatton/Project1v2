@@ -20,8 +20,12 @@ public class AccountServiceImpl implements AccountService {
     final static Logger loggy = Logger.getLogger(String.valueOf(AccountServiceImpl.class));
 
     @Override
-    public Account createAccount(Account account) throws BusinessException {
-        return null;
+    public void createAccount(Account account) throws BusinessException {
+        try{
+            dao.createAccount(account);
+        }catch (BusinessException e){
+            e.printStackTrace();
+        }
     }
 
     @Override

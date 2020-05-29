@@ -28,20 +28,49 @@
     <br/>
   <div class="container-fluid">
     <div class="card">
-<%--  <h2>Welcome, ${customer.firstName} ${customer.lastName}</h2>--%>
-<%--      <jsp:include page="withdrawForm.jsp"/>--%>
+        <c:if test="${customer.accounts == []}">
+<%--            Only if customer has no accounts--%>
+            <div class="container">
+                <h1 class="row justify-content-center">Apply for New Bank Account</h1>
+                <br/>
+                <p class="row justify-content-center">Please select the type of account you'd like to apply for.</p>
+                <p class="row justify-content-center">Account will be processed pending employee approval.</p>
+                <div class="card container-fluid">
+                    <div class="card-body">
+                        <form name="accountApplicationForm" action="accountapply" method="post">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="accountType" id="accountType1" value="CHECKING" checked>
+                                <label class="form-check-label" for="accountType1">
+                                    New Checking Account
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="accountType" id="accountType2" value="SAVINGS" >
+                                <label class="form-check-label" for="accountType2">
+                                    New Savings Account
+                                </label>
+                            </div>
+                            <br/>
+
+                            <button type="submit" class="btn btn-primary">Apply</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br/>
+        </c:if>
 
 <%--  For Each loop through accounts--%>
   <c:forEach var="account" items="${customer.accounts}">
       <div class="card-body border">
-          <h3 class="row justify-content-center">Account Summary</h3>
-              <h3 class="row">Balance: $${account.balance} </h3>
-              <h3 class="row">Type: ${account.accountType} </h3>
-              <h3 class="row">Account#: ${account.id}</h3>
-
+          <h1 class="row justify-content-center">Account Summary</h1>
+              <h2 class="row justify-content-around">Balance: $${account.balance} </h2>
+              <h3 class="row justify-content-around">Type: ${account.accountType} </h3>
+              <h4 class="row justify-content-around">Account#: ${account.id}</h4>
 
           <div class="card">
-              <h4 class="row justify-content-center">Transaction History</h4>
+              <br/>
+              <h2 class="row justify-content-center">Transaction History</h2>
               <br/>
   <%--  Add table for transaction history here.--%>
               <div class="card-body">
@@ -73,16 +102,6 @@
       </div>
     </div>
 </div>
-
-
-
-
-
-
-
-<%--  <form method="post" action="rickservlet">--%>
-<%--  <button type="submit" class="btn btn-primary">Add Infinite Money</button>--%>
-<%--  </form>--%>
 </div>
 </body>
 </html>

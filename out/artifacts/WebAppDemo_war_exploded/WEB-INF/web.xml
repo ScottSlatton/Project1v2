@@ -13,6 +13,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>AccountApplicationServlet</servlet-name>
+        <servlet-class>com.banking.servlets.AccountApplicationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>CustomerHomeServlet</servlet-name>
         <servlet-class>com.banking.servlets.CustomerHomeServlet</servlet-class>
     </servlet>
@@ -43,13 +48,18 @@
     </servlet>
 
     <servlet>
-        <servlet-name>WithdrawServlet</servlet-name>
-        <servlet-class>com.banking.servlets.WithdrawServlet</servlet-class>
+        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-class>com.banking.servlets.SignUpServlet</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>SignUpServlet</servlet-name>
-        <servlet-class>com.banking.servlets.SignUpServlet</servlet-class>
+        <servlet-name>TransferServlet</servlet-name>
+        <servlet-class>com.banking.servlets.TransferServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>WithdrawServlet</servlet-name>
+        <servlet-class>com.banking.servlets.WithdrawServlet</servlet-class>
     </servlet>
 
 
@@ -58,6 +68,11 @@
     <servlet-mapping>
         <servlet-name>ApproveAccountServlet</servlet-name>
         <url-pattern>/approve</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AccountApplicationServlet</servlet-name>
+        <url-pattern>/accountapply</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -93,6 +108,11 @@
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>TransferServlet</servlet-name>
+        <url-pattern>/transfer</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
