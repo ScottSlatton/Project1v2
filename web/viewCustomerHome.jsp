@@ -73,7 +73,6 @@
               <br/>
               <h2 class="row justify-content-center">Transaction History</h2>
               <br/>
-  <%--  Add table for transaction history here.--%>
               <div class="card-body">
                 <table class="table">
                   <thead class="thead-dark">

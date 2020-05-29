@@ -24,10 +24,9 @@ public class LoginServlet extends HttpServlet {
 //        PrintWriter out = response.getWriter();
 
 
+        Customer customer = new Customer();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-
-        Customer customer = new Customer();
 
         customer.setEmail(email);
         customer.setPassword(password);

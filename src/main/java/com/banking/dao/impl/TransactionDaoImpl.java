@@ -68,6 +68,7 @@ public class TransactionDaoImpl implements TransactionDao {
 
                 transactionList.add(t);
             }
+            return transactionList;
         } catch(ClassNotFoundException | SQLException e){
             System.out.println(e.getMessage());
         }
@@ -79,7 +80,7 @@ public class TransactionDaoImpl implements TransactionDao {
 
         //TODO Ripe for Refactoring. Should return a list of transactions.
 
-        List<Transaction> transactionList = new ArrayList<>();
+
 
         try(Connection connection = OracleConnection.getConnection()){
 
@@ -91,6 +92,9 @@ public class TransactionDaoImpl implements TransactionDao {
                 ps.setString(2, account.getId());
 
                 ResultSet rs = ps.executeQuery();
+
+                List<Transaction> transactionList = new ArrayList<>();
+
                 while(rs.next()) {
                     Transaction t = new Transaction();
                     Account sender = new Account();
@@ -103,6 +107,8 @@ public class TransactionDaoImpl implements TransactionDao {
                     t.setReceiver(receiver);
                     t.setAmount(rs.getDouble("amount"));
                     t.setTimestamp(rs.getTimestamp("timestamp"));
+
+                    System.out.println("Transaction back from the DB: "+ t);
 
                     transactionList.add(t);
                     account.setTransactions(transactionList);
