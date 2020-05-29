@@ -72,7 +72,6 @@ public class AccountApplicationServlet extends HttpServlet {
         if (session == null) {
             response.sendRedirect("index.jsp");
         } else {
-
             request.getRequestDispatcher("/accountApplicationForm.jsp").forward(request, response);
         }
     }
