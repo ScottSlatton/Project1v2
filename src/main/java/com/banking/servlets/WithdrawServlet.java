@@ -21,6 +21,7 @@ public class WithdrawServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
+
         if(session == null){
             response.sendRedirect("viewCustomerHome.jsp");
         } else {
@@ -63,6 +64,8 @@ public class WithdrawServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+
         request.getRequestDispatcher("/withdrawForm.jsp").forward(request, response);
     }
 }

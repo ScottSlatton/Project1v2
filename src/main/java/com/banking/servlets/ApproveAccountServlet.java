@@ -24,52 +24,46 @@ public class ApproveAccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Employee approve button sends here
 
-        String accountId = request.getParameter("accountid");
+        HttpSession session = request.getSession(false);
 
-        HttpSession session = request.getSession();
+        if (session == null) {
+            response.sendRedirect("viewCustomerHome.jsp");
+        } else {
 
-        List<Account> accounts = (List<Account>) session.getAttribute("accounts");
+            String accountId = request.getParameter("accountid");
 
-        for(int i = 0;i < accounts.size(); i++){
-            if(accounts.get(i).getId().equals(accountId)){
+            List<Account> accounts = (List<Account>) session.getAttribute("accounts");
 
-               Account approvedAccount = accounts.get(i);
-               approvedAccount.setStatus("ACTIVE");
+            for (int i = 0; i < accounts.size(); i++) {
+                if (accounts.get(i).getId().equals(accountId)) {
 
-                try {
+                    Account approvedAccount = accounts.get(i);
+                    approvedAccount.setStatus("ACTIVE");
 
-                    AccountService aService = new AccountServiceImpl();
-                    CustomerAccountService cAService = new CustomerAccountServiceImpl();
+                    try {
 
-                    //attach account to customer in customeraccount table
+                        AccountService aService = new AccountServiceImpl();
+                        CustomerAccountService cAService = new CustomerAccountServiceImpl();
+
+                        //attach account to customer in customeraccount table
 //                    cAService.createCustomerAccount(approvedAccount);
-                    //update account status in database
-                    aService.updateAccount(approvedAccount);
+                        //update account status in database
+                        aService.updateAccount(approvedAccount);
 
 
+                        response.sendRedirect("http://localhost:9090/employeehome");
 
-                    response.sendRedirect("http://localhost:9090/employeehome");
+
+                    } catch (BusinessException e) {
+                        e.printStackTrace();
+                        response.sendRedirect("http://localhost:9090/employeehome");
+                    }
 
 
-                } catch (BusinessException e) {
-                    e.printStackTrace();
-                    response.sendRedirect("http://localhost:9090/employeehome");
                 }
-
-
             }
+
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

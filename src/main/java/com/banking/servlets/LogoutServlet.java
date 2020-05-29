@@ -25,8 +25,13 @@ import java.io.IOException;
         }
 
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            HttpSession session = request.getSession();
-            session.invalidate();
-            response.sendRedirect("http://localhost:9090/");
+            HttpSession session = request.getSession(false);
+
+            if (session == null) {
+                response.sendRedirect("http://localhost:9090/");
+            } else {
+                session.invalidate();
+                response.sendRedirect("http://localhost:9090/");
+            }
         }
     }

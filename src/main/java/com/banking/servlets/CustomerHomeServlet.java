@@ -23,11 +23,16 @@ public class CustomerHomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
 
-        if(session.getAttribute("customer") != null){
+        HttpSession session = request.getSession(false);
 
-            //TODO every time you go to the customer home page, get a fresh set of transactions.
+        if(session == null){
+            response.sendRedirect("viewCustomerHome.jsp");
+        } else {
+
+            if (session.getAttribute("customer") != null) {
+
+                //TODO every time you go to the customer home page, get a fresh set of transactions.
 
 //            Customer customer = (Customer) session.getAttribute("customer");
 //            List<Account> accounts = customer.getAccounts();
@@ -39,13 +44,13 @@ public class CustomerHomeServlet extends HttpServlet {
 //                e.printStackTrace();
 //            }
 
-            request.getRequestDispatcher("/viewCustomerHome.jsp").forward(request, response);
-        } else {
+                request.getRequestDispatcher("/viewCustomerHome.jsp").forward(request, response);
+            } else {
 //            response.setStatus(404);
 //            request.getRequestDispatcher("/404").forward(request, response);
-            response.sendRedirect("http://localhost:9090/");
+                response.sendRedirect("http://localhost:9090/");
+            }
         }
-
     }
 }
 

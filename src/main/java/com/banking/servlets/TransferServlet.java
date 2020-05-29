@@ -28,38 +28,68 @@ public class TransferServlet extends HttpServlet {
 
             //get account based off of dropdown selection from form
             Customer customer = (Customer) session.getAttribute("customer");
-            List<Account> accounts = customer.getAccounts();
 
+            String senderId = request.getParameter("senderAccount");
+            String receiverId = request.getParameter("receiverAccount");
+
+            Account sender = new Account();
+            sender.setId(senderId);
+
+
+            Account receiver = new Account();
+            receiver.setId(receiverId);
 
             //Make a new transaction object to update the accounts
             Transaction transaction = new Transaction();
             transaction.setAmount(Double.parseDouble(request.getParameter("transferAmount")));
 
-            System.out.println(transaction.getAmount());
 
+            AccountService aService = new AccountServiceImpl();
+            try {
+                sender = aService.getAccount(sender);
+                receiver = aService.getAccount(receiver);
 
-            for(int i = 0; i < accounts.size();i++){
-                boolean isSelectedAccount = accounts.get(i).getId().equals(request.getParameter("transferAccount"));
+                transaction.setSender(sender);
+                transaction.setReceiver(receiver);
 
-                if (isSelectedAccount){
-                        Account selectedAcct = accounts.get(i);
-                    try{
-                        transaction.setSender(selectedAcct);
-                        transaction.setReceiver(selectedAcct);
-                        AccountService aService = new AccountServiceImpl();
-                        aService.deposit(selectedAcct, transaction);  //TODO check on deposit
-                        response.sendRedirect("viewCustomerHome.jsp");
+                aService.transfer(sender, receiver, transaction);
 
-                    } catch (BusinessException e){
-                        e.printStackTrace();
-                        response.sendRedirect("viewCustomerHome.jsp");
-                    }
+            } catch (BusinessException e) {
+                e.printStackTrace();
+            } finally {
+                response.sendRedirect("viewCustomerHome.jsp");
+            }
 
-                }
+            //Go through accounts and try to match
+//            List<Account> accounts = customer.getAccounts();
+//
+//            for (int i =0;i< accounts.size();i++){
+//                if(accounts.get(i).getId().equals(senderId)){
+//                    Account sender = accounts.get(i);
+//                }
+//            }
+//            for(int i = 0; i < accounts.size();i++){
+//                boolean isSelectedAccount = accounts.get(i).getId().equals(request.getParameter("transferAccount"));
+//
+//                if (isSelectedAccount){
+//                        Account selectedAcct = accounts.get(i);
+//                    try{
+//                        transaction.setSender(selectedAcct);
+//                        transaction.setReceiver(selectedAcct);
+//                        AccountService aService = new AccountServiceImpl();
+//                        aService.deposit(selectedAcct, transaction);  //TODO check on deposit
+//
+//
+//                    } catch (BusinessException e){
+//                        e.printStackTrace();
+//                        response.sendRedirect("viewCustomerHome.jsp");
+//                    }
+//
+//                }
 
             }
 
-        } response.sendRedirect("viewCustomerHome.jsp");
+//        } response.sendRedirect("viewCustomerHome.jsp");
 
     }
 

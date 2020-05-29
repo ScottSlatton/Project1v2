@@ -55,16 +55,19 @@ public class AccountDaoImpl implements AccountDao {
             while(rs.next()){
                 Account account = new Account();
                 account.setBalance(rs.getDouble("balance"));
+                account.setStatus(rs.getString("status"));
+                account.setAccountType(rs.getString("accounttype"));
                 account.setId(rs.getString("id"));
                 return account;
             }
 
 
         }catch(ClassNotFoundException | SQLException e){
-            e.printStackTrace();
-        }
 
-        return null;
+            e.printStackTrace();
+
+        }
+        throw new BusinessException("Could not get account.");
     }
 
     public List<Account> getAccountsByUser(Customer customer) throws BusinessException{
@@ -113,7 +116,9 @@ public class AccountDaoImpl implements AccountDao {
     public void updateAccount(Account account) throws BusinessException {
         try(Connection connection= OracleConnection.getConnection()){
 
-            System.out.println("Inside updateAccount dao"+ account.getBalance());
+
+            System.out.println("Inside updateAccount dao "+ account);
+
             String sql="UPDATE account SET balance = ?, accounttype = ?, status = ? WHERE id = ?";
             PreparedStatement ps=connection.prepareStatement(sql);
             ps.setDouble(1, account.getBalance());

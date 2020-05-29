@@ -96,7 +96,7 @@ public class AccountServiceImpl implements AccountService {
             } catch(BusinessException e){
                 e.printStackTrace();
             }
-            throw new BusinessException("Invalid amount entered.");
+//            throw new BusinessException("Invalid amount entered.");
         }
     }
 
@@ -110,16 +110,20 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
+    @Override
     public void transfer(Account sender, Account receiver, Transaction transaction) throws BusinessException{
+        TransactionService tService = new TransactionServiceImpl();
         // withdraw from sender
         try {
             withdraw(sender, transaction);
             // deposit into receiver
             deposit(receiver, transaction);
+//            tService.createTransaction(transaction);
+
         } catch(BusinessException e){
             e.printStackTrace();
         }
-        throw new BusinessException("Transfer could not be completed.");
+//        throw new BusinessException("Transfer could not be completed.");
     }
 
     @Override
