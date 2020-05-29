@@ -28,7 +28,7 @@ public class AccountApplicationServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if(session == null){
-            response.sendRedirect("viewCustomerHome.jsp");
+            response.sendRedirect("index.jsp");
         } else {
 
             String accountType = request.getParameter("accountType");
@@ -67,6 +67,13 @@ public class AccountApplicationServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/accountApplicationForm.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            response.sendRedirect("index.jsp");
+        } else {
+
+            request.getRequestDispatcher("/accountApplicationForm.jsp").forward(request, response);
+        }
     }
 }

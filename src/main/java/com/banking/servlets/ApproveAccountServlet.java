@@ -27,7 +27,7 @@ public class ApproveAccountServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (session == null) {
-            response.sendRedirect("viewCustomerHome.jsp");
+            response.sendRedirect("index.jsp");
         } else {
 
             String accountId = request.getParameter("accountid");

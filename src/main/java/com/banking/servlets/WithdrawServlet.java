@@ -64,9 +64,14 @@ public class WithdrawServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
 
-        request.getRequestDispatcher("/withdrawForm.jsp").forward(request, response);
+        HttpSession session = request.getSession(false);
+
+        if(session == null){
+            response.sendRedirect("index.jsp");
+        } else {
+            request.getRequestDispatcher("/withdrawForm.jsp").forward(request, response);
+        }
     }
 }
 

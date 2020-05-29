@@ -23,7 +23,7 @@ public class TransferServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if(session == null){
-            response.sendRedirect("viewCustomerHome.jsp");
+            response.sendRedirect("index.jsp");
         } else {
 
             //get account based off of dropdown selection from form
@@ -59,38 +59,7 @@ public class TransferServlet extends HttpServlet {
             } finally {
                 response.sendRedirect("viewCustomerHome.jsp");
             }
-
-            //Go through accounts and try to match
-//            List<Account> accounts = customer.getAccounts();
-//
-//            for (int i =0;i< accounts.size();i++){
-//                if(accounts.get(i).getId().equals(senderId)){
-//                    Account sender = accounts.get(i);
-//                }
-//            }
-//            for(int i = 0; i < accounts.size();i++){
-//                boolean isSelectedAccount = accounts.get(i).getId().equals(request.getParameter("transferAccount"));
-//
-//                if (isSelectedAccount){
-//                        Account selectedAcct = accounts.get(i);
-//                    try{
-//                        transaction.setSender(selectedAcct);
-//                        transaction.setReceiver(selectedAcct);
-//                        AccountService aService = new AccountServiceImpl();
-//                        aService.deposit(selectedAcct, transaction);  //TODO check on deposit
-//
-//
-//                    } catch (BusinessException e){
-//                        e.printStackTrace();
-//                        response.sendRedirect("viewCustomerHome.jsp");
-//                    }
-//
-//                }
-
-            }
-
-//        } response.sendRedirect("viewCustomerHome.jsp");
-
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

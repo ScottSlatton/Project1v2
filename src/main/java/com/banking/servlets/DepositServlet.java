@@ -23,7 +23,7 @@ public class DepositServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if(session == null){
-            response.sendRedirect("viewCustomerHome.jsp");
+            response.sendRedirect("index.jsp");
         } else {
 
             //get account based off of dropdown selection from form
@@ -34,9 +34,6 @@ public class DepositServlet extends HttpServlet {
             //Make a new transaction object to update the accounts
             Transaction transaction = new Transaction();
             transaction.setAmount(Double.parseDouble(request.getParameter("depositAmount")));
-
-            System.out.println(transaction.getAmount());
-
 
             for(int i = 0; i < accounts.size();i++){
                 boolean isSelectedAccount = accounts.get(i).getId().equals(request.getParameter("depositAccount"));

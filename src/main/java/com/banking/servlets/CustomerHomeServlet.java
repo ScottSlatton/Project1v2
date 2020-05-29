@@ -18,16 +18,21 @@ import java.util.List;
 @WebServlet(name = "CustomerHomeServlet")
 public class CustomerHomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
 
+        if (session == null) {
+            response.sendRedirect("index.jsp");
+        } else {
 
+        }
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
 
+
         if(session == null){
-            response.sendRedirect("viewCustomerHome.jsp");
+            response.sendRedirect("index.jsp");
         } else {
 
             if (session.getAttribute("customer") != null) {
