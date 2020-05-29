@@ -9,9 +9,9 @@
 
 <jsp:include page="navBar.jsp"/>
 <div class="container">
-    <h1 class="row justify-content-center" >New Customer Sign Up</h1>
-    <br/>
         <div class="card container-fluid">
+            <br/>
+            <h1 class="row justify-content-center" >New Customer Sign Up</h1>
             <div class="card-body">
                 <form name="signUpForm" action="signup" method="post">
                     <div class="form-group">

@@ -8,20 +8,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <jsp:include page="navBar.jsp"/>
-<div class="card">
-    <br/>
-    <h1 class="row justify-content-center">Employee Login</h1>
-    <div class="card-body">
-    <form name="loginForm" action="employeelogin" method="post">
-        <div class="form-group">
-            <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" name="email">
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<div class="container">
+    <div class="card container-fluid">
+            <br/>
+            <h1 class="row justify-content-center">Employee Login</h1>
+            <div class="card-body">
+                <form name="loginForm" action="employeelogin" method="post">
+                <div class="form-group">
+                    <label for="inputEmail">Email address</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
     </div>
 </div>

@@ -21,11 +21,12 @@
 <%--  <c:if test="${pageContext.request.requestURI.endsWith('/signup')}">--%>
 <%--    <jsp:include page="signUpForm.jsp"/>--%>
 <%--  </c:if>--%>
-
+<br/>
 </div>
-
+<footer>
 <div class="row justify-content-center">
   <a href="/employeelogin">Employee Portal</a>
 </div>
+</footer>
 </body>
 </html>
