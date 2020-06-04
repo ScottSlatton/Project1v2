@@ -28,7 +28,7 @@
                     <select class="selectpicker" name="depositAccount" id="depositAccount">
 <%--                    TODO for loop through customers accounts, adding options--%>
                     <c:forEach var="account" items="${customer.accounts}">
-                        <option>${account.id}</option>
+                        <option>${account.accountType}: ${account.id}</option>
                     </c:forEach>
                     </select>
                 </div>

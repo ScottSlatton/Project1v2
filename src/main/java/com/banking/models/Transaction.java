@@ -3,6 +3,7 @@ package com.banking.models;
 import java.sql.Timestamp;
 import java.util.Date;
 
+
 public class Transaction {
     String id;
     Account sender;
